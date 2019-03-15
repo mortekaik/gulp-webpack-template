@@ -1,0 +1,10 @@
+extends ../auth.layout.pug
+
+block content
+	h1 Главная
+	form(action="#" method="post")
+		label(for="email") Email
+		input(type="text" name="email" id="email")
+		label(for="password") Password
+		input(type="text" name="password" id="password")
+		button Войти
