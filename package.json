@@ -1,0 +1,17 @@
+{
+  "name": "gulp-webpack",
+  "version": "1.0.0",
+  "description": "builder on gulp4 + webpack4",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Mortekaik",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
+  }
+}
