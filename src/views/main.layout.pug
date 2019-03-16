@@ -1,5 +1,6 @@
 block variables
-	
+
+doctype html
 html(lang="ru")
 	head
 		meta(charset="UTF-8")
@@ -10,6 +11,6 @@ html(lang="ru")
 		.wrappper
 			.main-content
 				block content
-					
+				include ./common/menu.pug
+
 			include ./common/footer.pug
-			
