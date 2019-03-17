@@ -8,10 +8,12 @@ module.exports = {
 			browsers: [ "last 2 versions" ],
 			cascade: false
 		}),
-		require("postcss-advaced-variables")({
+		require("postcss-advanced-variables")({
 			variables: require("./src/assets/styles/variables")
 		}),
 		require("postcss-nested"),
-		require("cssnano")()
+		require("cssnano")({
+			preset: 'default',
+		})
 	]
 };

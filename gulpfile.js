@@ -39,3 +39,4 @@ function styles() {
 
 
 exports.templates = templates;
+exports.styles = styles;
