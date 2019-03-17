@@ -2,7 +2,8 @@ const gulp = require('gulp'),
 			pug = require('gulp-pug'),
 			postcss = require('gulp-postcss'),
 			sourcemaps = require('gulp-sourcemaps'),
-			rename = require('gulp-rename');
+			rename = require('gulp-rename'),
+			del = require('del');
 
 const paths = {
 	root: './build',
@@ -37,6 +38,19 @@ function styles() {
 		.pipe(gulp.dest(paths.styles.dest))
 }
 
+// CLEAN
+function clean() {
+	return del(paths.root);
+}
+
 
 exports.templates = templates;
 exports.styles = styles;
+exports.clean = clean;
+
+
+// DEFAULT
+gulp.task('default', gulp.series(
+	clean,
+	gulp.parallel(styles, templates)
+));
