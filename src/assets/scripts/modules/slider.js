@@ -12,7 +12,7 @@ function goToSlide(n) {
 	slides[currentSlide].classList.add('slider__item--active');
 }
 
-// event handlers
+// event handler
 function setupListners() {
 	nextSlide.addEventListener('click', function() {
 		goToSlide(currentSlide + 1);

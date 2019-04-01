@@ -3,7 +3,10 @@ const gulp = require('gulp'),
 			postcss = require('gulp-postcss'),
 			sourcemaps = require('gulp-sourcemaps'),
 			rename = require('gulp-rename'),
-			del = require('del');
+			del = require('del'),
+			// webpack	= require('webpack'),
+			// webpackConfig = require('./webpack.config'),
+			gulpWebpack = require('webpack-stream');
 
 const paths = {
 	root: './build',
@@ -16,6 +19,16 @@ const paths = {
 		main: './src/assets/styles/main.scss',
 		src: './src/assets/styles/**/*.scss',
 		dest: './build/assets/styles'
+	},
+	scripts: {
+		src: './src/assets/scripts/*.js',
+		dest: './build/assets/scripts'
+	}
+}
+
+const webConfig = {
+	output: {
+		filename: 'works.bundle.js'
 	}
 }
 
@@ -25,7 +38,7 @@ function templates() {
 		.pipe(pug({
 			pretty: true
 		}))
-		.pipe(gulp.dest(paths.root))
+		.pipe(gulp.dest(paths.root));
 }
 
 // SCSS
@@ -35,7 +48,14 @@ function styles() {
 		.pipe(postcss(require('./postcss.config')))
 		.pipe(rename('main.min.css'))
 		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(paths.styles.dest))
+		.pipe(gulp.dest(paths.styles.dest));
+}
+
+// JS, Webpack
+function scripts() {
+	return gulp.src('./src/assets/scripts/works.js')
+		.pipe(gulpWebpack(webConfig))
+		.pipe(gulp.dest(paths.scripts.dest));
 }
 
 // CLEAN
@@ -46,11 +66,12 @@ function clean() {
 
 exports.templates = templates;
 exports.styles = styles;
+exports.scripts = scripts;
 exports.clean = clean;
 
 
 // DEFAULT
 gulp.task('default', gulp.series(
 	clean,
-	gulp.parallel(styles, templates)
+	gulp.parallel(styles, templates, scripts)
 ));
