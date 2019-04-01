@@ -1,18 +1,30 @@
 const webpack = require('webpack');
-const uglifyjs = require('uglifyjs-webpack-plugin');
+const terserJSPlugin = require('terser-webpack-plugin');
 
 const config = {
 	entry: {
-		about: './src/assets/scripts/about.js',
-		auth: './src/assets/scripts/auth.js',
-		works: './src/assets/scripts/works.js',
-		blog: './src/assets/scripts/blog.js'
+		about: './src/assets/scripts/about',
+		auth: './src/assets/scripts/auth',
+		works: './src/assets/scripts/works',
+		blog: './src/assets/scripts/blog'
 	},
 	output: {
 		filename: '[name].bundle.js'
 	},
+	module: {
+		rules: [
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: {
+					loader: 'babel-loader'
+				}
+			}
+		]
+	},
 	plugins: [
-		new uglifyjs({
+		new terserJSPlugin({
+			parallel: true,
 			sourceMap: true
 		})
 	]

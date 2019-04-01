@@ -1,12 +1,15 @@
 const gulp = require('gulp'),
+			plumber = require('gulp-plumber'),
+			notify = require('gulp-notify'),
 			pug = require('gulp-pug'),
 			postcss = require('gulp-postcss'),
 			sourcemaps = require('gulp-sourcemaps'),
 			rename = require('gulp-rename'),
 			del = require('del'),
-			// webpack	= require('webpack'),
-			// webpackConfig = require('./webpack.config'),
-			gulpWebpack = require('webpack-stream');
+			named = require('vinyl-named'),
+			webpackStream = require('webpack-stream'),
+			webpack = webpackStream.webpack,
+			webpackConfig = require('./webpack.config');
 
 const paths = {
 	root: './build',
@@ -23,12 +26,6 @@ const paths = {
 	scripts: {
 		src: './src/assets/scripts/*.js',
 		dest: './build/assets/scripts'
-	}
-}
-
-const webConfig = {
-	output: {
-		filename: 'works.bundle.js'
 	}
 }
 
@@ -53,8 +50,15 @@ function styles() {
 
 // JS, Webpack
 function scripts() {
-	return gulp.src('./src/assets/scripts/works.js')
-		.pipe(gulpWebpack(webConfig))
+	return gulp.src(paths.scripts.src)
+		.pipe(plumber({
+			errorHandler: notify.onError(err => ({
+				title: 'Webpack',
+				message: err.message
+			}))
+		}))
+		.pipe(named())
+		.pipe(webpackStream(webpackConfig, webpack))
 		.pipe(gulp.dest(paths.scripts.dest));
 }
 
