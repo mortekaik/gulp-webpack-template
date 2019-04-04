@@ -11,14 +11,13 @@ const config = {
 	output: {
 		filename: '[name].bundle.js'
 	},
+	devtool: 'cheap-module-inline-source-map',
 	module: {
 		rules: [
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				use: {
-					loader: 'babel-loader'
-				}
+				loader: 'babel-loader'
 			}
 		]
 	},

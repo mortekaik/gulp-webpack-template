@@ -9,7 +9,8 @@ const gulp = require('gulp'),
 			named = require('vinyl-named'),
 			webpackStream = require('webpack-stream'),
 			webpack = webpackStream.webpack,
-			webpackConfig = require('./webpack.config');
+			webpackConfig = require('./webpack.config'),
+			browserSync = require('browser-sync').create();
 
 const paths = {
 	root: './build',
@@ -62,11 +63,30 @@ function scripts() {
 		.pipe(gulp.dest(paths.scripts.dest));
 }
 
+// SERVER
+function serve() {
+	browserSync.init({
+		server: paths.root
+	});
+	browserSync.watch(paths.root + '/**/*.*', browserSync.reload);
+}
+
 // CLEAN
 function clean() {
 	return del(paths.root);
 }
 
+// WATCHER
+function watch() {
+	gulp.watch(paths.styles.src, styles);
+	gulp.watch(paths.templates.src, templates);
+	gulp.watch(paths.scripts.src, scripts);
+}
+
+gulp.task('build', gulp.series(
+	clean,
+	gulp.parallel(styles, scripts, templates)
+));
 
 exports.templates = templates;
 exports.styles = styles;
@@ -75,7 +95,6 @@ exports.clean = clean;
 
 
 // DEFAULT
-gulp.task('default', gulp.series(
-	clean,
-	gulp.parallel(styles, templates, scripts)
-));
+gulp.task('default',
+	gulp.series('build', gulp.parallel(serve, watch))
+);
