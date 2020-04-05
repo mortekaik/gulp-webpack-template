@@ -11,6 +11,7 @@ const config = {
 	output: {
 		filename: '[name].bundle.js'
 	},
+	mode: 'development',
 	devtool: 'cheap-module-inline-source-map',
 	module: {
 		rules: [
