@@ -8,7 +8,12 @@
   },
   "keywords": [],
   "author": "Mortekaik",
-  "license": "ISC",
+	"license": "ISC",
+	"browserslist": [
+		"last 3 versions",
+		"> 1%",
+		"ie 9-11"
+	],
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
