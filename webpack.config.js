@@ -25,7 +25,8 @@ const config = {
 	plugins: [
 		new terserJSPlugin({
 			parallel: true,
-			sourceMap: true
+			sourceMap: true,
+			extractComments: false
 		})
 	]
 };
