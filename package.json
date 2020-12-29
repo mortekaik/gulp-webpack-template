@@ -17,7 +17,7 @@
   "devDependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
-    "@babel/preset-env": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
     "autoprefixer": "^10.1.0",
     "babel-loader": "^8.2.2",
     "browser-sync": "^2.26.13",
@@ -29,7 +29,7 @@
     "gulp-postcss": "^9.0.0",
     "gulp-pug": "^4.0.1",
     "gulp-rename": "^2.0.0",
-    "gulp-sourcemaps": "^2.6.5",
+    "gulp-sourcemaps": "^3.0.0",
     "postcss": "^8.2.1",
     "postcss-advanced-variables": "^3.0.1",
     "postcss-easy-import": "^3.0.0",
