@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const terserJSPlugin = require('terser-webpack-plugin');
 
 const config = {
@@ -22,13 +21,14 @@ const config = {
 			}
 		]
 	},
+
 	plugins: [
 		new terserJSPlugin({
 			parallel: true,
 			sourceMap: true,
 			extractComments: false
 		})
-	]
+	],
 };
 
 module.exports = config;
