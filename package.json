@@ -15,13 +15,13 @@
     "ie 9-11"
   ],
   "devDependencies": {
-    "@babel/cli": "^7.16.0",
-    "@babel/core": "^7.16.5",
-    "@babel/preset-env": "^7.16.5",
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.6",
+    "@babel/preset-env": "^7.19.4",
     "autoprefixer": "^10.4.13",
     "babel-loader": "^8.2.3",
     "browser-sync": "^2.27.10",
-    "cssnano": "^5.0.14",
+    "cssnano": "^5.1.14",
     "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-notify": "^4.0.0",
