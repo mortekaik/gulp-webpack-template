@@ -15,9 +15,9 @@
 		"ie 9-11"
 	],
 	"devDependencies": {
-		"@babel/cli": "^7.22.9",
-		"@babel/core": "^7.22.9",
-		"@babel/preset-env": "^7.22.9",
+		"@babel/cli": "^7.23.0",
+		"@babel/core": "^7.23.2",
+		"@babel/preset-env": "^7.23.2",
 		"autoprefixer": "^10.4.16",
 		"babel-loader": "8.3.0",
 		"browser-sync": "^2.29.3",
